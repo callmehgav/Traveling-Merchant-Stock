@@ -103,7 +103,7 @@ now = datetime.now()
 resetTime = now.replace(hour=19, minute=0, second=0, microsecond=0)
 
 # Formatting for pretty output
-print('=' * 200)
+print('=' * 45)
 
 # Compare time now to reset time to make sure that the correct items are shown. +1 means it's before reset +2 means
 # reset has happened so we need items for the next day.
@@ -113,4 +113,4 @@ else:
     print(merchStock.get(remainder + 1))
 
 # Formatting for pretty output
-print('=' * 200)
+print('=' * 45)
