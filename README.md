@@ -11,7 +11,7 @@ If you're familiar with a python IDE running the program that way may be easier 
 
 ### Run using the terminal
 Go to the directory where you downloaded the file 
-```$ cd Downloads/Traveling-Merchant-Stock-master/TravelingMerchantStock```
+```$ cd Downloads/Traveling-Merchant-Stock-master```
 
 Install DateTime for python
 ```$pip install datetime```
