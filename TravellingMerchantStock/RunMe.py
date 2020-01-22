@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from tkinter import *
 from tkinter import messagebox
 
@@ -129,32 +129,23 @@ merchStock = {
 }
 
 # today gets today's date which will be used to compare to the first day the merchant's logic was figured out.
-today = datetime.today()
+today = datetime.utcnow().date()
 
 # firstDayOfMerch holds the value of the first day the merchant's logic was figured out
-firstDayOfMerch = datetime(2018, 3, 11)
+firstDayOfMerch = datetime(2018, 3, 11).date()
 
 # difference holds the day difference of the two previous dates
 difference = today - firstDayOfMerch
 
 # remainder holds the value equal to the number key in the dictionary, This will return the correct items.
-# 120 is hardcoded because that is how many sets of items that are in the dictionary
-remainder = difference.days % 120
+# len(merchStock) holds the value of the number of items in the list
+remainder = difference.days % len(merchStock)
 
 # now is used to initialize a date that will compare to reset time
-now = datetime.now()
-
-# reset time is hardcoded to 7pm because that is when reset is EST. Daylight savings time WILL effect this. to 20:00
-# (8pm)
-resetTime = now.replace(hour=19, minute=0, second=0, microsecond=0)
+now = datetime.utcnow()
 
 # hide extra window
 Tk().withdraw()
 
-# Compare time now to reset time to make sure that the correct items are shown. +1 means it's before reset +2 means
-# reset has happened so we need items for the next day.
-if now >= resetTime:
-    messagebox.showinfo("Todays Stock", merchStock.get(remainder + 2))
-else:
-    messagebox.showinfo("Todays Stock", merchStock.get(remainder + 1))
-
+# Display info. Not sure why the +1 is needed
+messagebox.showinfo("Today's Stock","  Uncharted island map,\n" + merchStock.get(remainder+1)+"\n")
