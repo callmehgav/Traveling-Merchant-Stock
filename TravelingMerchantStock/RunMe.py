@@ -1,7 +1,10 @@
 from datetime import datetime
+from tkinter import *
+from tkinter import messagebox
 
-# merchStock - Dictionary that holds all combo of items that merchant can supply. This Dictonary will need updated when Merchant
-# stock is ever updated
+# merchStock - Dictionary that holds all combo of items that merchant can supply. This Dictonary will need updated
+# when Merchant stock is ever updated
+
 merchStock = {
     1: '  Slayer VIP Coupon  Slayer VIP Coupon  ',
     2: '  Unfocused damage enhancer  Unfocused damage enhancer  ',
@@ -145,15 +148,13 @@ now = datetime.now()
 # (8pm)
 resetTime = now.replace(hour=19, minute=0, second=0, microsecond=0)
 
-# Formatting for pretty output
-print('=' * 45)
+# hide extra window
+Tk().withdraw()
 
 # Compare time now to reset time to make sure that the correct items are shown. +1 means it's before reset +2 means
 # reset has happened so we need items for the next day.
 if now >= resetTime:
-    print(merchStock.get(remainder + 2))
+    messagebox.showinfo("Todays Stock", merchStock.get(remainder + 2))
 else:
-    print(merchStock.get(remainder + 1))
+    messagebox.showinfo("Todays Stock", merchStock.get(remainder + 1))
 
-# Formatting for pretty output
-print('=' * 45)
